@@ -11,7 +11,7 @@ def pytest_addoption(parser):
 @pytest.fixture(scope="function")
 def browser_op(request):
     chrome_options = Options()
-    chrome_options.add_argument("--lang=ru")
+    chrome_options.add_experimental_option('prefs', {'intl.accept_languages': "language"})
     browser = webdriver.Chrome(chrome_options=chrome_options)
     browser.implicitly_wait(5)
     yield browser
